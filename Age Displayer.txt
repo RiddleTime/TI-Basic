@@ -1,0 +1,148 @@
+lBL 0
+ClrHome
+Disp "Year?"
+Prompt A
+Disp "Month?"
+Prompt B
+If B<1 or B>12
+Goto B
+Disp "Day?"
+Prompt C
+Goto 1
+
+Lbl B
+ClrHome
+Disp :"Enter a valid","month"
+Pause
+Goto 0
+
+Lbl 1
+If B=1
+31->G
+If B=2
+Goto G
+Lbl 2
+If B=3
+31->G
+If B=4
+30->G
+If B=5
+31->G
+If B=6
+30->G
+If B=7
+31->G
+If B=8
+31->G
+If B=9
+30->G
+If B=10
+31->G
+If B=11
+30->G
+If B=12
+31->G
+Goto 3
+
+Lbl G
+If A=2008 or 2012 or 2016 or 2020
+1->H
+
+If H=1
+29->G
+
+If H≠1
+28->G
+
+Goto 2
+
+Lbl 3
+
+If C<1 or C>G
+Goto C
+
+Goto 4
+
+Lbl C
+ClrHome
+Disp "Enter a valid","day"
+Pause
+Goto 0
+
+Lbl 4
+ClrHome
+Disp "Loading...."
+getDate->L1
+If A>L1(2)
+Goto D
+
+If A=>L1(1) and B>L1(2)
+Goto D
+
+If A=L1(1) and B=L1(2) and C>L1(30
+Goto D
+
+Goto 5
+
+Lbl D
+ClrHome
+Disp "Enter a date in","the past"
+Pause
+Goto 0
+
+Lbl 5
+getDate->L1
+L1(1)-A ->D
+L1(2)-B ->E
+L1(3)-C ->F
+
+If E<0
+D-1 ->D
+If E<0
+12+E ->E
+
+If F<0
+E-1 ->E
+If F<0
+G=F ->F
+
+If L1(2)=B and C>L1(3)
+D-1 ->D
+If L1(2)=B and C>L1(3)
+12+E ->E
+
+Lbl 6
+ClrHome
+Menu("Output?","Year+Month+Day",N,"In days",Z
+
+Lbl N
+ClrHome
+Disp "Years:"
+Disp D
+Disp "Months:"
+Disp E
+Disp "Days:"
+Disp F
+Goto 7
+
+Lbl Z
+E*365 ->I
+E*30 ->J
+I+J+D ->K
+ClrHome
+Disp "Days:"
+Disp K
+
+Lb 7
+DelVar A
+DelVar B
+DelVar C
+DelVar D
+DelVar E
+DelVar F
+DelVar G
+DelVar H
+DelVar I
+DelVar J
+DelVar K
+ClrList L1
