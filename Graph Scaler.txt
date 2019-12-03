@@ -1,0 +1,14 @@
+Xscl->Q
+Yscl->R
+(Ymax-Ymin)/20->Yscl
+(Xmax-Xmin)/20->Xscl
+Xscl->V
+Yscl->W
+Disp "Before:", "Xscl:", Q, "Yscl:", R
+Pause  "PRESS ENTER"
+Disp "After:", "Xscl:", V, "Yscl:", W
+DelVar Q
+DelVar R
+DelVar V
+DelVar W
+Stop
